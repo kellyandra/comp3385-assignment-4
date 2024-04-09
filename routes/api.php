@@ -9,5 +9,5 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
-Route::get('/api/v1/movies', [MovieController::class, 'index']);
-Route::post('/api/v1/movies', [MovieController::class, 'store']);
+Route::get('/v1/movies', [MovieController::class, 'index']);
+Route::post('/v1/movies', [MovieController::class, 'store']);

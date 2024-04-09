@@ -16,7 +16,7 @@ class MovieController extends Controller
         'movies'=>$movies]);
     }
 public function store (Request $request) {
-    $request->validate([
+    $validatedData=$request->validate([
         'title'=>'required|string|max:255',
         'description'=>'required|string|max:1000',
         'poster'=> 'required|image|mimes:jpeg,png,jpg|max:2048'
@@ -32,8 +32,10 @@ public function store (Request $request) {
     }
     //save movie to database
     $movie=new Movie();
-    $movie->title =$request->title; 
-    $movie->description=$request->description;
+    $movie->title = $validatedData['title'];
+    $movie->description = $validatedData['description'];
+    //$movie->title =$request->title; 
+    //$movie->description=$request->description;
 
 
     if($filePath){
