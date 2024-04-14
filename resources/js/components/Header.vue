@@ -23,6 +23,12 @@
                     <li class="nav-item">
                         <RouterLink class="nav-link" :class="{ active: $route.path === '/movies/create'}" to="/movies/create">Add Movie</RouterLink>
                     </li>
+                    <li class="nav-item" v-if="!isLoggedIn">
+                        <RouterLink class="nav-link" to="/login">Login</RouterLink>
+                    </li>
+                    <li class="nav-item" v-if="isLoggedIn">
+                        <a class="nav-link" href="#" @click="logout">Logout</a>
+                    </li>
                 </ul>
             </div>
         </div>

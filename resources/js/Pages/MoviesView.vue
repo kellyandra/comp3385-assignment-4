@@ -4,7 +4,8 @@
     <div v-for="movie in movies" :key="movie.id" class="card mb-3">
         <div class="row g-0">
             <div class="col-md-4">
-                <img :src="`/storage/${movie.poster}`" alt="Movie Poster" />
+              <img :src="movie.poster_url" alt="Movie Poster" />
+
             </div>
             <div class="col-md-8">
                 <h3 class="card-title">{{ movie.title }}</h3>
@@ -25,7 +26,7 @@ onMounted(() => {
     fetchMovies();
 });
 
-
+const jwt = localStorage.getItem('jwt');
 function fetchMovies() {
   fetch('/api/v1/movies', {
     headers: {
